@@ -1,0 +1,18 @@
+server:
+  port: 9000
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+      bindings:
+        incoming-tweets:
+          destinations: tweet
+          contentType: application/json
+        sentiment-events:
+          destinations: sentiment
+          contentType: application/json
+  kafka:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
